@@ -127,6 +127,8 @@ func createPagerdutyRoute() *alertmanager.Route {
 		{Receiver: receiverNull, Match: map[string]string{"namespace": "openshift-customer-monitoring"}},
 		// https://issues.redhat.com/browse/OSD-3569
 		{Receiver: receiverNull, Match: map[string]string{"namespace": "openshift-operators"}},
+		// https://issues.redhat.com/browse/OSD-5953
+		{Receiver: receiverNull, Match: map[string]string{"namespace": "openshift-redhat-marketplace"}},
 		// https://issues.redhat.com/browse/OSD-3220
 		{Receiver: receiverNull, Match: map[string]string{"alertname": "SLAUptimeSRE"}},
 		// https://issues.redhat.com/browse/OSD-3629
@@ -162,6 +164,7 @@ func createPagerdutyRoute() *alertmanager.Route {
 		// elasticsearch: route any ES alert to PD
 		// https://issues.redhat.com/browse/OSD-3326
 		{Receiver: receiverPagerduty, Match: map[string]string{"cluster": "elasticsearch"}},
+
 	}
 
 	return &alertmanager.Route{
